@@ -9,3 +9,4 @@
 - SQL Server: Um sistema de gerenciamento de banco de dados relacional fornecido pela Microsoft, conhecido por sua integração profunda com o resto do ecossistema da Microsoft.
 - Redis: Um armazenamento de dados na memória, usado como banco de dados, cache e broker de mensagens.
 
+- docker-compose up 
