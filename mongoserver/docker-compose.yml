@@ -1,0 +1,20 @@
+version: '3.9'
+
+networks:
+  app-mongoserver-network:
+    driver: bridge
+
+services:
+
+  mongoserver:
+    image: mongo:latest
+    container_name: mongoserver
+    restart: always
+    expose:
+      - 27017
+    ports:
+      - 27017:27017
+    networks:
+      - app-mongoserver-network
+
+      

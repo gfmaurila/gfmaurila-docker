@@ -1,0 +1,21 @@
+version: '3.9'
+
+networks:
+  app-postgresql-network:
+    driver: bridge
+
+services:
+  
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_USER: gfmaurila
+      POSTGRES_PASSWORD: C23l10a1985
+      POSTGRES_DB: gfmaurila
+    restart: always
+    expose:
+      - 5432
+    ports:
+      - "5432:5432"
+    networks:
+      - app-postgresql-network  

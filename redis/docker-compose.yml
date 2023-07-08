@@ -1,0 +1,19 @@
+version: '3.9'
+
+networks:
+  app-redis-network:
+    driver: bridge
+
+services:
+
+  redis:
+    image: redis:latest
+    container_name: redis
+    command: redis-server --requirepass C23l10a1985
+    restart: always
+    expose:
+      - 6379
+    ports:
+      - 6379:6379
+    networks:
+      - app-redis-network

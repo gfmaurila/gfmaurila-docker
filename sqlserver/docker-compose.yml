@@ -1,0 +1,24 @@
+version: '3.9'
+
+networks:
+  app-sqlserver-network:
+    driver: bridge
+
+services:
+
+  sqlserver:
+    image: mcr.microsoft.com/azure-sql-edge:latest
+    cap_add: [ 'SYS_PTRACE' ]
+    hostname: mssql
+    container_name: sqlserver
+    restart: always
+    expose:
+      - 1433
+    ports:
+      - 1433:1433
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=@C23l10a1985
+    networks:
+      - app-sqlserver-network
+      

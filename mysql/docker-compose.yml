@@ -1,0 +1,23 @@
+version: '3.9'
+
+networks:
+  app-mysql-network:
+    driver: bridge
+
+services:
+  
+  mysql:
+    image: mysql:8.0
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: C23l10a1985
+      MYSQL_USER: gfmaurila
+      MYSQL_PASSWORD: C23l10a1985
+      MYSQL_DATABASE: gfmaurila
+    restart: always
+    expose:
+      - 3306
+    ports:
+      - "3306:3306"
+    networks:
+      - app-mysql-network
