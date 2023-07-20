@@ -1,23 +1,56 @@
-version: '3.9'
+version: '3'
+
+services:
+  oracle:
+    image: oracleinanutshell/oracle-xe-11g:latest
+    container_name: oracle
+    ports:
+      - "1521:1521"
+      - "5500:5500"
+    environment:
+      - ORACLE_ALLOW_REMOTE=true
+      - ORACLE_DISABLE_ASYNCH_IO=true
+      - ORACLE_USER=system
+      - ORACLE_PASSWORD=oracle
+      - ORACLE_DATABASE=xe
+    restart: always
+    networks:
+      - app-oracle-network
+
+  oracle-db:
+    image: oracleinanutshell/oracle-xe-11g
+    container_name: oracle_db
+    ports:
+      - "49161:1521"
+      - "8080:8080"
+    environment:
+      - ORACLE_ALLOW_REMOTE=true
+      - ORACLE_DISABLE_ASYNCH_IO=true
+    restart: always
+    networks:
+      - app-oracle-network
 
 networks:
   app-oracle-network:
     driver: bridge
 
-services:
-  
-  oracle:
-    image: oracleinanutshell/oracle-xe-11g
-    environment:
-      ORACLE_ALLOW_REMOTE: true
-      ORACLE_DISABLE_ASYNCH_IO: true
-      ORACLE_USER: gfmaurila
-      ORACLE_PASSWORD: C23l10a1985
-      ORACLE_DATABASE: gfmaurila
-    restart: always
-    expose:
-      - 1521
-    ports:
-      - "1521:1521"
-    networks:
-      - app-oracle-network
+
+# https://hub.docker.com/r/oracleinanutshell/oracle-xe-11g
+
+# docker run -d -p 49161:1521 -p 8080:8080 oracleinanutshell/oracle-xe-11g
+
+# Login http://localhost:8080/apex/apex_admin with following credential:
+# username: ADMIN
+# password: admin
+# password: !G18u03i1986
+
+
+# DBEaver
+# hostname: localhost
+# port: 49161
+# sid: xe
+# username: system
+# password: oracle
+
+
+
